@@ -1,5 +1,9 @@
 <script>
 
+	//add font awesome icons
+	import Fa from 'svelte-fa'
+	import { faDownload } from '@fortawesome/free-solid-svg-icons'
+
 	//import html2canvas for use
 	import html2canvas from "html2canvas";
 
@@ -50,15 +54,18 @@
 	// variable to update acclaim template with selected option
 	let selected_source;
 
-
 	//custom acclaim source name variable that will be put in the template in place of an image
 	let custom_source = "";
+
+	//boolean to show the download button after export is clicked
+	let hide_download = true;
 
 	//toggle which template is shown
 	function toggleTemplate(){
 		acclaim = !acclaim;
 
-
+		/* there was a weird issue where the button would be checked but the 
+		text wasn't showing and vice versa. This fixes it */
 		vegan_gf = false;
 		document.getElementById("vegan-girlfriend").style.visibility = "hidden";
 	}
@@ -70,6 +77,7 @@
 			vegan_gf = false; 
 			document.getElementById("vegan-girlfriend").style.visibility = "hidden";
 		}
+		//otherwise, show it
 		else{
 			vegan_gf = true; 
 			document.getElementById("vegan-girlfriend").style.visibility = "visible";
@@ -87,6 +95,7 @@
 
 				alert("shelf talker ready for download");
 
+				hide_download = false;
 			});
 		}	
 
@@ -101,6 +110,7 @@
 
 				alert("shelf talker ready for download");
 
+				hide_download = false;
 			});
 		}
 	}
@@ -349,11 +359,9 @@
 			<!-- big export button here-->
 			<button type="button" class="btn btn-success btn-lg export-button" on:click={exportShelfTalker}>Export Shelf Talker</button>
 
-			<a id="download-button" href="/">Download Link</a>
+			<a id="download-button" class="btn btn-lg export-button" href="/" role="button" hidden={hide_download}><Fa icon={faDownload} size="lg"/> Download Shelf Talker </a>
 		</div>
 	</div>
-
-
 </main>
 
 <style>
