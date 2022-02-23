@@ -263,14 +263,16 @@
 			<div class="col-md-6">
 				<h1>info</h1>
 
+				
 				<!-- Nav for Acclaim / Non Acclaim -->
 				<div class="btn-group template-select" role="group" aria-label="template_select_buttons">
-					<input on:click={toggleTemplate} type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+					<input on:change={toggleTemplate} type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
 					<label class="btn btn-outline-danger" for="btnradio1">Acclaim Template</label>
 				  
-					<input on:click={toggleTemplate} type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+					<input on:change={toggleTemplate} type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
 					<label class="btn btn-outline-danger" for="btnradio2">Non-Acclaim Template</label>
 				</div>
+				
 				<!-- End Acclaim / Non Acclaim Nav-->
 
 				{#if acclaim}
@@ -366,12 +368,16 @@
 
 <style>
 
+	.acclaim-template-preview, .nonacclaim-template-preview{
+		position: relative;
+	}
 	/* make body extend all the way down */
 
 	main{
 		height: 100%;
 		background-color: whitesmoke;
 	}
+	
 	/*acclaim template styles */
 	#acclaim-template-preview{
 		background-color: white;
@@ -443,6 +449,7 @@
 	.acclaim-preview-logo img{
 		width: 75px;
 		height: auto;
+
 	}
 
 	/* specific image styling for acclaim logos */
