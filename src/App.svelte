@@ -228,7 +228,6 @@
 								{/if}
 							{/if}
 
-
 							</div>
 						  </div>
 						<div class="acclaim-preview-text d-flex justify-content-center my-3 px-5">
@@ -326,9 +325,9 @@
 							<input class="form-control form-control-lg" type="text" placeholder="Wine Name" bind:value={preview_name} aria-label="acclaim_wine_name">
 
 							<!-- Options to increase or decrease font size -->
-							<button type="button" class="btn btn-labeled btn-default" on:click={increaseFontSize}><span class="btn-label"><Fa icon={faPlus} size="lg"/></span> Increase Name Font Size</button>
+							<button type="button" class="btn btn-labeled btn-secondary export-button" on:click={increaseFontSize}><span class="btn-label"><Fa icon={faPlus} size="lg"/></span> Increase Name Font Size</button>
 
-							<button type="button" class="btn btn-labeled btn-default" on:click={decreaseFontSize}><span class="btn-label"><Fa icon={faMinus} size="lg"/></span> Decrease Name Font Size</button>
+							<button type="button" class="btn btn-labeled btn-secondary export-button" on:click={decreaseFontSize}><span class="btn-label"><Fa icon={faMinus} size="lg"/></span> Decrease Name Font Size</button>
 							
 							<input class="form-control form-control-lg" type="text" placeholder="Type" bind:value={preview_type} aria-label="acclaim_wine_type">
 
