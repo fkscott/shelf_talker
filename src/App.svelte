@@ -10,9 +10,40 @@
 	//import html2canvas for use
 	import html2canvas from "html2canvas";
 
+	//acclaim source select binding
+	/* array of javascript objects that contain 
+
+	an id for each source
+	the text to show in the dropdown
+	the path for the logo images of each acclaim
+	the name of the css style used for each acclaim source
+
+	*/
+	let acclaim_sources = [
+		{id: 0, name: `Decanter`, img_path:'img/acclaim_logos/decanter.png', styles: 'decanter'},
+		{id: 1, name: `James Suckling`, img_path:'img/acclaim_logos/suckling.png', styles: 'suckling'},
+		{id: 2, name: `Jeb Dunnuck`, img_path:'img/acclaim_logos/dunnuck.png', styles: 'dunnuck'},
+		{id: 3, name: `Rober Parker's Wine Advocate`, img_path:'img/acclaim_logos/parker.png', styles: 'parker'},
+		{id: 4, name: `Tim Atkin`, img_path:'img/acclaim_logos/atkin.png', styles: 'atkin'},
+		{id: 5, name: `Vinous`, img_path:'img/acclaim_logos/vinous.png', styles: 'vinous'},
+		{id: 6, name: `Wine & Spirits`, img_path:'img/acclaim_logos/wineandspirits.png', styles: 'wineandspirits'},
+		{id: 7, name: `Wine Spectator`, img_path:'img/acclaim_logos/spectator.png', styles: 'spectator'},
+		{id: 8, name: `Untappd`, img_path:'img/acclaim_logos/untappd.svg', styles: 'untappd'},
+		{id: 9, name: `Custom Source`, img_path:''},
+	];
+
+	//lifestyle option select that replaces the original vegan girlfriend toggle
+	let lifestyle_options = [
+		{id: 0, label: 'none', text:''},
+		{id: 1, label: 'Vegan / GF', text:'vegan / gf'},
+		{id: 2, label: 'Sustainable', text:'sustainable'},
+		{id: 3, label: 'Natural', text: 'natural'},
+		{id: 4, label: 'Organic', text: 'organic'},
+		{id: 5, label: 'Biodynmamic', text: 'biodynamic'}
+	];
+
 	//boolean to toggle template
 	let acclaim = true;
-
 
 	//variables updated by acclaim template
 	let preview_name = "";
@@ -42,27 +73,8 @@
 	//boolean to show the download button after export is clicked
 	let hide_download = true;
 
-	//acclaim source select binding
-	/* array of javascript objects that contain 
-
-	an id for each source
-	the text to show in the dropdown
-	the path for the logo images of each acclaim
-	the name of the css style used for each acclaim source
-
-	*/
-	let acclaim_sources = [
-		{id: 0, name: `Decanter`, img_path:'img/acclaim_logos/decanter.png', styles: 'decanter'},
-		{id: 1, name: `James Suckling`, img_path:'img/acclaim_logos/suckling.png', styles: 'suckling'},
-		{id: 2, name: `Jeb Dunnuck`, img_path:'img/acclaim_logos/dunnuck.png', styles: 'dunnuck'},
-		{id: 3, name: `Rober Parker's Wine Advocate`, img_path:'img/acclaim_logos/parker.png', styles: 'parker'},
-		{id: 4, name: `Tim Atkin`, img_path:'img/acclaim_logos/atkin.png', styles: 'atkin'},
-		{id: 5, name: `Vinous`, img_path:'img/acclaim_logos/vinous.png', styles: 'vinous'},
-		{id: 6, name: `Wine & Spirits`, img_path:'img/acclaim_logos/wineandspirits.png', styles: 'wineandspirits'},
-		{id: 7, name: `Wine Spectator`, img_path:'img/acclaim_logos/spectator.png', styles: 'spectator'},
-		{id: 8, name: `Untappd`, img_path:'img/acclaim_logos/untappd.svg', styles: 'untappd'},
-		{id: 9, name: `Custom Source`, img_path:''},
-	];
+	//variable for choosing lifestyle option 
+	let lifestyle;
 
  
 	/* FUNCTIONS TO UPDATE VIEW AND EXPORT SHELF TALKER */
@@ -78,19 +90,6 @@
 		document.getElementById("vegan-girlfriend").style.visibility = "hidden";
 	}
 
-	function toggleVegan(){
-		console.log("we're here");
-		//if its visible hide it
-		if(vegan_gf){
-			vegan_gf = false; 
-			document.getElementById("vegan-girlfriend").style.visibility = "hidden";
-		}
-		//otherwise, show it
-		else{
-			vegan_gf = true; 
-			document.getElementById("vegan-girlfriend").style.visibility = "visible";
-		}
-	} 
 
 	function increaseFontSize(){
 		if(acclaim){
@@ -213,12 +212,19 @@
 						</div>
 
 						<div class="accliam-source-container d-flex flex-row bd-highlight mb-1 justify-content-between">
-							<div style="visibility: hidden" class="acclaim-preview-vegan-gf bd-highlight align-self-end" id="vegan-girlfriend">vegan/gf</div>
+							<div class="acclaim-preview-vegan-gf bd-highlight align-self-end" id="vegan-girlfriend">
+								{#if lifestyle === undefined}
+									{lifestyle_options[0].label}
+								{:else}
+									{lifestyle.text}
+								{/if}
+							</div>
 							
 							<div class="acclaim-preview-source  bd-highlight justify-content-right align-self-end">
 								{#if !selected_source}
-								no source selected
-							{:else}
+									no source selected
+								{:else}
+
 								{#if selected_source.id == 9}
 									{custom_source}
 								{:else}
@@ -349,12 +355,17 @@
 
 							<input class="form-control form-control-lg" type="text" placeholder="Custom Acclaim Source" bind:value={custom_source} aria-label="acclaim_custom_source">
 							
-							<div class="form-check">
-								<input on:click={toggleVegan} class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-								<label class="form-check-label" for="flexCheckDefault">
-									Vegan / Gluten Free?
-								</label>
-							  </div>
+
+							<select bind:value={lifestyle} class="form-select form-select-lg mb-3" aria-label="acclaim_vegan_dropdown">
+								<option hidden>Vegan, GF, etc?</option>
+								<!-- load all lifestyle options from our JS-->
+								{#each lifestyle_options as option }
+									<option value={option}>
+										{option.label}
+									</option>
+								{/each}
+
+							</select>
 
 							
 						</div>
