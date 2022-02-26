@@ -104,7 +104,6 @@
 			html2canvas(document.querySelector("#nonacclaim-template-preview")).then(canvas =>{
 				const download_link = document.querySelector("#download-button");
 
-				console.log("hot here")
 				download_link.href = canvas.toDataURL();
 				download_link.download = `${nonacclaim_name}_shelf_talker.png`;
 
@@ -131,7 +130,7 @@
 					<!-- Logic to show templates-->
 					{#if acclaim}
 					<div id="acclaim-template-preview">
-						<div class="acclaim-preview-name d-flex flex-row justify-content-center p-2 text-center">
+						<div class="acclaim-preview-name d-flex flex-row justify-content-center text-center">
 							{#if preview_name ===""}
 								Wine Name
 							{:else}
@@ -174,10 +173,10 @@
 							{/if}
 						</div>
 
-						<div class="accliam-source-container d-flex flex-row bd-highlight mb-3 justify-content-between">
+						<div class="accliam-source-container d-flex flex-row bd-highlight mb-1 justify-content-between">
 							<div style="visibility: hidden" class="acclaim-preview-vegan-gf bd-highlight align-self-end" id="vegan-girlfriend">vegan/gf</div>
 							
-							<div class="acclaim-preview-source px-3 bd-highlight justify-content-right align-self-end">
+							<div class="acclaim-preview-source  bd-highlight justify-content-right align-self-end">
 								{#if !selected_source}
 								no source selected
 							{:else}
@@ -199,7 +198,7 @@
 							{/if}
 						</div>
 
-						<div class="acclaim-preview-logo d-flex justify-content-center">
+						<div class="acclaim-preview-logo d-flex justify-content-center align-content-end">
 							<img src="img/the_wine_merchant_logo.png" alt="wine merchant logo"/>
 						</div>
 					</div>
@@ -384,13 +383,20 @@
 		width: 600px;
 		height: 800px;
 		margin: none;
+
+		outline: 2px solid black;
+		outline-offset: -15px;
 	}
 	.acclaim-preview-name{
 		font-family: 'Cinzel', serif;
 		font-weight: 500; /* semi-bold */
 		font-size: 36pt;
 		color: #AA263D;
-		line-height: normal;
+		padding-top: 25px;
+		padding-bottom: 25px;
+		max-height: 125px;
+		line-height: 50px;
+
 	}
 
 	.acclaim-preview-type{
@@ -416,6 +422,7 @@
 		font-family: 'Work Sans', sans-serif;
 		font-weight: 700;
 		font-size: 72pt;
+		line-height: 100px;
 		color: #AA263D;
 	}
 
@@ -443,68 +450,60 @@
 		font-family: 'EB Garamond', serif;
 		font-weight: 400;
 		font-size: 22px;
-		height: 175px;
+		height: 150px;
+		text-align: justify;
 	}
 
 	.acclaim-preview-logo img{
 		width: 75px;
 		height: auto;
-
+		padding-top: 25px;
 	}
 
 	/* specific image styling for acclaim logos */
 	.suckling{
 		width: auto;
 		height: 60px;
-		padding-right: 25px;
 	}
 
 	.dunnuck{
 		width:auto;
 		height: 25px;
-		padding-right: 25px;
 	}
 
 	.parker{
 		width: auto;
 		height: 60px;
-		padding-right: 25px;
 	}
 
 	.atkin{
 		width: auto;
 		height: 60px;
-		padding-right: 25px;
 	}
 
 	.vinous{
 		width: auto;
 		height: 35px;
-		padding-right: 25px;
 	}
 
 	.wineandspirits{
 		width: auto;
 		height: 35px;
-		padding-right: 25px;
 	}
 
 	.spectator{
 		width: auto;
 		height: 45px;
-		padding-right: 25px;
 	}
 
 	.untappd{
 		width: auto;
 		height: 50px;
-		padding-right: 25px;
 	}
 
 	.decanter{
 		width: auto;
 		height: 40px;
-		padding-right: 25px;
 	}
 	/* non-acclaim template styles */
 	#nonacclaim-template-preview{
