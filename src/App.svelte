@@ -428,13 +428,11 @@
 	
 	/*acclaim template styles */
 	#acclaim-template-preview{
-		background-color: white;
+		background-image: url("../img/talker-bg.png");
 		width: 600px;
 		height: 800px;
 		margin: none;
 
-		outline: 2px solid black;
-		outline-offset: -15px;
 	}
 	.acclaim-preview-name{
 		font-family: 'Cinzel', serif;
@@ -558,11 +556,9 @@
 	}
 	/* non-acclaim template styles */
 	#nonacclaim-template-preview{
-		background-color: white;
+		background-image: url("../img/talker-bg.png");
 		width: 600px;
 		height: 800px;
-		outline: 2px solid black;
-		outline-offset: -15px;
 	}
 	textarea{
 		resize: none;
