@@ -157,12 +157,10 @@
 <main>
 	<div class="container" id="app-container">
 
-		<div class="row" >
+		<div class="row">
 
 			<!-- Start Shelf Talker Preview-->
 			<div class="col-md-6">
-				<h1>Preview here</h1>
-
 				<div id="shelf-talker-container">
 					
 					<!-- Logic to show templates-->
@@ -300,9 +298,7 @@
 			
 			<!-- Start Info Entry-->
 			<div class="col-md-6">
-				<h1>info</h1>
 
-				
 				<!-- Nav for Acclaim / Non Acclaim -->
 				<div class="btn-group template-select" role="group" aria-label="template_select_buttons">
 					<input on:change={toggleTemplate} type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
@@ -367,8 +363,8 @@
 
 						<!--start acclaim text-->
 						<div class="col-md-6">
-							<h4>Acclaim Text Entry</h4>
-							<textarea class="form-control" bind:value={preview_text} placeholder="Enter Acclaim text. Max 8 lines please."></textarea>
+							<h4>Text Entry</h4>
+							<textarea class="form-control" bind:value={preview_text} placeholder="Enter Acclaim text."></textarea>
 						</div>
 						<!-- end acclaim text-->
 					</div>
@@ -430,6 +426,10 @@
 	main{
 		height: 100%;
 		background-color: whitesmoke;
+	}
+
+	#app-container{
+		padding-top: 100px;
 	}
 	
 	/*acclaim template styles */
