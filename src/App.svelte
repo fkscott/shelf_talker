@@ -34,7 +34,7 @@
 
 	//lifestyle option select that replaces the original vegan girlfriend toggle
 	let lifestyle_options = [
-		{id: 0, label: 'none', text:''},
+		{id: 0, label: 'No Lifestyle Option', text:''},
 		{id: 1, label: 'Vegan / GF', text:'vegan / gf'},
 		{id: 2, label: 'Sustainable', text:'sustainable'},
 		{id: 3, label: 'Natural', text: 'natural'},
@@ -74,7 +74,7 @@
 	let hide_download = true;
 
 	//variable for choosing lifestyle option 
-	let lifestyle;
+	let lifestyle = lifestyle_options[0];
 
  
 	/* FUNCTIONS TO UPDATE VIEW AND EXPORT SHELF TALKER */
@@ -213,11 +213,7 @@
 
 						<div class="accliam-source-container d-flex flex-row bd-highlight mb-1 justify-content-between">
 							<div class="acclaim-preview-vegan-gf bd-highlight align-self-end" id="vegan-girlfriend">
-								{#if lifestyle === undefined}
-									{lifestyle_options[0].label}
-								{:else}
-									{lifestyle.text}
-								{/if}
+								{lifestyle.text}
 							</div>
 							
 							<div class="acclaim-preview-source  bd-highlight justify-content-right align-self-end">
