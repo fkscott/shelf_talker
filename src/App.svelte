@@ -1,8 +1,11 @@
 <script>
 
 	//add font awesome icons
-	import Fa from 'svelte-fa'
-	import { faDownload } from '@fortawesome/free-solid-svg-icons'
+	import Fa from 'svelte-fa';
+	import { faDownload, faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
+
+	//add jquery
+	import jQuery from 'jquery';
 
 	//import html2canvas for use
 	import html2canvas from "html2canvas";
@@ -30,12 +33,22 @@
 	//boolean for toggling vegan girlfriend visibility
 	let vegan_gf;
 
+	// variable to update acclaim template with selected option
+	let selected_source;
+
+	//custom acclaim source name variable that will be put in the template in place of an image
+	let custom_source = "";
+
+	//boolean to show the download button after export is clicked
+	let hide_download = true;
+
 	//acclaim source select binding
 	/* array of javascript objects that contain 
 
 	an id for each source
 	the text to show in the dropdown
 	the path for the logo images of each acclaim
+	the name of the css style used for each acclaim source
 
 	*/
 	let acclaim_sources = [
@@ -51,14 +64,9 @@
 		{id: 9, name: `Custom Source`, img_path:''},
 	];
 
-	// variable to update acclaim template with selected option
-	let selected_source;
+ 
+	/* FUNCTIONS TO UPDATE VIEW AND EXPORT SHELF TALKER */
 
-	//custom acclaim source name variable that will be put in the template in place of an image
-	let custom_source = "";
-
-	//boolean to show the download button after export is clicked
-	let hide_download = true;
 
 	//toggle which template is shown
 	function toggleTemplate(){
@@ -83,6 +91,37 @@
 			document.getElementById("vegan-girlfriend").style.visibility = "visible";
 		}
 	} 
+
+	function increaseFontSize(){
+		if(acclaim){
+			var fontSize = parseInt(jQuery("#acclaim-name").css("font-size"));
+			fontSize = fontSize + 2 + "px";
+			jQuery("#acclaim-name").css({'font-size': fontSize});
+		}
+
+		else{
+			console.log("changing nonacclaim");
+			var fontSize = parseInt(jQuery("#nonacclaim-name").css("font-size"));
+			fontSize = fontSize + 2 + "px";
+			jQuery("#nonacclaim-name").css({'font-size': fontSize});	
+		}
+		
+	}
+
+	function decreaseFontSize(){
+		if(acclaim){
+			var fontSize = parseInt(jQuery("#acclaim-name").css("font-size"));
+			fontSize = fontSize - 2 + "px";
+			jQuery("#acclaim-name").css({'font-size': fontSize});
+		}
+
+		else{
+			var fontSize = parseInt(jQuery("#nonacclaim-name").css("font-size"));
+			fontSize = fontSize - 2 + "px";
+			jQuery("#nonacclaim-name").css({'font-size': fontSize});	
+		}
+		
+	}
 
 	function exportShelfTalker(){
 
@@ -130,7 +169,7 @@
 					<!-- Logic to show templates-->
 					{#if acclaim}
 					<div id="acclaim-template-preview">
-						<div class="acclaim-preview-name d-flex flex-row justify-content-center text-center">
+						<div class="acclaim-preview-name d-flex flex-row justify-content-center text-center" id="acclaim-name">
 							{#if preview_name ===""}
 								Wine Name
 							{:else}
@@ -206,7 +245,7 @@
 
 					<!-- start non-acclaim preview-->
 					<div id="nonacclaim-template-preview">
-						<div class="acclaim-preview-name d-flex flex-row justify-content-center text-center">
+						<div class="acclaim-preview-name d-flex flex-row justify-content-center text-center" id="nonacclaim-name">
 							{#if nonacclaim_name ===""}
 								Wine Name
 							{:else}
@@ -283,6 +322,11 @@
 
 							<h4> Wine Info</h4>
 							<input class="form-control form-control-lg" type="text" placeholder="Wine Name" bind:value={preview_name} aria-label="acclaim_wine_name">
+
+							<!-- Options to increase or decrease font size -->
+							<button type="button" class="btn btn-labeled btn-default" on:click={increaseFontSize}><span class="btn-label"><Fa icon={faPlus} size="lg"/></span> Increase Name Font Size</button>
+
+							<button type="button" class="btn btn-labeled btn-default" on:click={decreaseFontSize}><span class="btn-label"><Fa icon={faMinus} size="lg"/></span> Decrease Name Font Size</button>
 							
 							<input class="form-control form-control-lg" type="text" placeholder="Type" bind:value={preview_type} aria-label="acclaim_wine_type">
 
@@ -335,6 +379,11 @@
 	
 								<h4> Wine Info</h4>
 								<input class="form-control form-control-lg" type="text" placeholder="Wine Name" bind:value={nonacclaim_name} aria-label="non_acclaim_wine_name">
+
+								<!-- Options to increase or decrease font size -->
+								<button type="button" class="btn btn-labeled btn-default" on:click={increaseFontSize}><span class="btn-label"><Fa icon={faPlus} size="lg"/></span> Increase Name Font Size</button>
+
+								<button type="button" class="btn btn-labeled btn-default" on:click={decreaseFontSize}><span class="btn-label"><Fa icon={faMinus} size="lg"/></span> Decrease Name Font Size</button>	
 								
 								<input class="form-control form-control-lg" type="text" placeholder="Type" bind:value={nonacclaim_type} aria-label="non_acclaim_wine_type">
 
@@ -389,13 +438,14 @@
 	}
 	.acclaim-preview-name{
 		font-family: 'Cinzel', serif;
-		font-weight: 500; /* semi-bold */
-		font-size: 36pt;
+		font-weight: 700; /* semi-bold */
+		font-size: 42pt;
 		color: #AA263D;
-		padding-top: 25px;
-		padding-bottom: 25px;
-		max-height: 125px;
-		line-height: 50px;
+		padding-top: 40px;
+		padding-bottom: 10px;
+		max-height: 135px;
+		line-height: 60px;
+		padding-inline: 20px;
 
 	}
 
@@ -403,6 +453,7 @@
 		font-family: 'Cinzel', serif;
 		font-weight: 400; /* medium */
 		font-size: 24pt;
+		padding-top: 20px;
 	}
 
 	.acclaim-preview-vintage{
