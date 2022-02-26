@@ -206,7 +206,7 @@
 
 					<!-- start non-acclaim preview-->
 					<div id="nonacclaim-template-preview">
-						<div class="acclaim-preview-name d-flex flex-row justify-content-center p-2 text-center">
+						<div class="acclaim-preview-name d-flex flex-row justify-content-center text-center">
 							{#if nonacclaim_name ===""}
 								Wine Name
 							{:else}
@@ -510,6 +510,8 @@
 		background-color: white;
 		width: 600px;
 		height: 800px;
+		outline: 2px solid black;
+		outline-offset: -15px;
 	}
 	textarea{
 		resize: none;
@@ -520,7 +522,7 @@
 		font-family: 'EB Garamond', serif;
 		font-weight: 400;
 		font-size: 22px;
-		height: 400px;	
+		height: 350px;	
 	}
 
 	.template-select{
