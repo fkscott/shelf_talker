@@ -1,46 +1,14 @@
 <script>
 
-	//add font awesome icons
+	//Add dependencies for font awesome, jquery, and html2canvas
 	import Fa from 'svelte-fa';
 	import { faDownload, faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
-
-	//add jquery
 	import jQuery from 'jquery';
-
-	//import html2canvas for use
 	import html2canvas from "html2canvas";
 
-	//acclaim source select binding
-	/* array of javascript objects that contain 
-
-	an id for each source
-	the text to show in the dropdown
-	the path for the logo images of each acclaim
-	the name of the css style used for each acclaim source
-
-	*/
-	let acclaim_sources = [
-		{id: 0, name: `Decanter`, img_path:'img/acclaim_logos/decanter.png', styles: 'decanter'},
-		{id: 1, name: `James Suckling`, img_path:'img/acclaim_logos/suckling.png', styles: 'suckling'},
-		{id: 2, name: `Jeb Dunnuck`, img_path:'img/acclaim_logos/dunnuck.png', styles: 'dunnuck'},
-		{id: 3, name: `Rober Parker's Wine Advocate`, img_path:'img/acclaim_logos/parker.png', styles: 'parker'},
-		{id: 4, name: `Tim Atkin`, img_path:'img/acclaim_logos/atkin.png', styles: 'atkin'},
-		{id: 5, name: `Vinous`, img_path:'img/acclaim_logos/vinous.png', styles: 'vinous'},
-		{id: 6, name: `Wine & Spirits`, img_path:'img/acclaim_logos/wineandspirits.png', styles: 'wineandspirits'},
-		{id: 7, name: `Wine Spectator`, img_path:'img/acclaim_logos/spectator.png', styles: 'spectator'},
-		{id: 8, name: `Untappd`, img_path:'img/acclaim_logos/untappd.svg', styles: 'untappd'},
-		{id: 9, name: `Custom Source`, img_path:''},
-	];
-
-	//lifestyle option select that replaces the original vegan girlfriend toggle
-	let lifestyle_options = [
-		{id: 0, label: 'No Lifestyle Option', text:''},
-		{id: 1, label: 'Vegan / GF', text:'vegan / gf'},
-		{id: 2, label: 'Sustainable', text:'sustainable'},
-		{id: 3, label: 'Natural', text: 'natural'},
-		{id: 4, label: 'Organic', text: 'organic'},
-		{id: 5, label: 'Biodynmamic', text: 'biodynamic'}
-	];
+	//import select content from outside files
+	import {lifestyle_options} from './lifestyle_options';
+	import {acclaim_sources} from './acclaim_sources.js';
 
 	//boolean to toggle template
 	let acclaim = true;
@@ -60,9 +28,6 @@
 	let nonacclaim_type = "";
 	let nonacclaim_region = "";
 	let nonacclaim_text = "";
-
-	//boolean for toggling vegan girlfriend visibility
-	let vegan_gf;
 
 	// variable to update acclaim template with selected option
 	let selected_source;
@@ -155,6 +120,19 @@
 </script>
 
 <main>
+<div class="container-xxl">
+
+<!-- As a heading -->
+<nav class="navbar navbar-dark bg-dark">
+	<div class="container-fluid">
+	  <span class="navbar-brand mb-0 h1">Navbar</span>
+
+	  <button class="btn btn-default text-light " type="button">Help</button>
+
+	</div>
+  </nav>
+</div>
+	  
 	<div class="container" id="app-container">
 
 		<div class="row">
@@ -383,9 +361,9 @@
 								<input class="form-control form-control-lg" type="text" placeholder="Wine Name" bind:value={nonacclaim_name} aria-label="non_acclaim_wine_name">
 
 								<!-- Options to increase or decrease font size -->
-								<button type="button" class="btn btn-labeled btn-default" on:click={increaseFontSize}><span class="btn-label"><Fa icon={faPlus} size="lg"/></span> Increase Name Font Size</button>
+								<button type="button" class="btn btn-labeled btn-secondary export-button" on:click={increaseFontSize}><span class="btn-label"><Fa icon={faPlus} size="lg"/></span> Increase Name Font Size</button>
 
-								<button type="button" class="btn btn-labeled btn-default" on:click={decreaseFontSize}><span class="btn-label"><Fa icon={faMinus} size="lg"/></span> Decrease Name Font Size</button>	
+								<button type="button" class="btn btn-labeled btn-secondary export-button" on:click={decreaseFontSize}><span class="btn-label"><Fa icon={faMinus} size="lg"/></span> Decrease Name Font Size</button>	
 								
 								<input class="form-control form-control-lg" type="text" placeholder="Type" bind:value={nonacclaim_type} aria-label="non_acclaim_wine_type">
 
