@@ -10,6 +10,9 @@
 	import {lifestyle_options} from './lifestyle_options';
 	import {acclaim_sources} from './acclaim_sources.js';
 
+	//import other components
+	import Help from './Help.svelte';
+
 	//boolean to toggle template
 	let acclaim = true;
 
@@ -120,19 +123,34 @@
 </script>
 
 <main>
-<div class="container-xxl">
-
-<!-- As a heading -->
-<nav class="navbar navbar-dark bg-dark">
-	<div class="container-fluid">
-	  <span class="navbar-brand mb-0 h1">Navbar</span>
-
-	  <button class="btn btn-default text-light " type="button">Help</button>
-
+	<div class="container-xxl">
+		<nav class="navbar navbar-light bg-light">
+			<div class="container-fluid">
+			<span class="navbar-brand mb-0 h1">The Wine Merchant - Shelf Talker Tool</span>
+				<button class="btn btn-outline-secondary" type="button" data-bs-toggle="modal" data-bs-target="#help-modal">Help</button>
+			</div>
+		</nav>
 	</div>
-  </nav>
-</div>
-	  
+	 
+	<!-- Vertically centered scrollable modal -->
+	<div class="modal fade" tabindex="-1" id="help-modal">
+		<div class="modal-dialog">
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <h5 class="modal-title">How to use this tool!</h5>
+			  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+			  <Help></Help>
+			</div>
+			<div class="modal-footer">
+			  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+			</div>
+		  </div>
+		</div>
+	  </div>
+
+
 	<div class="container" id="app-container">
 
 		<div class="row">
@@ -403,7 +421,6 @@
 
 	main{
 		height: 100%;
-		background-color: whitesmoke;
 	}
 
 	#app-container{
