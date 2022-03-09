@@ -151,7 +151,7 @@
 	  </div>
 
 
-	<div class="container" id="app-container">
+	<div class="container-fluid" id="app-container">
 
 		<div class="row">
 
@@ -425,6 +425,7 @@
 
 	#app-container{
 		padding-top: 50px;
+		max-width: 1400px;
 	}
 	
 	/*acclaim template styles */

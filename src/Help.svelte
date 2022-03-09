@@ -1,4 +1,10 @@
+
 <main>
+    <h6>If the info entry section is overlapping the preview...</h6>
+    <p>I designed this tool around modern screen sizes (1280x720 and larger). If you make the window smaller clipping will occur.
+        To mitigate this issue, do <strong>Ctrl Minus</strong> or <strong>Cmd Minus</strong> to zoom out and the overlapping issue should go away.
+    </p>
+    
     <h6>Making a Shelf Talker</h6>
     <p>Making a shelf talker is easy. Just start typing in the specifications of the wine and you will see the preview update on the left.
         To switch between the Acclaim and Non-Acclaim template, just click their respective buttons at the top of the page.
