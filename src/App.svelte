@@ -424,7 +424,7 @@
 	}
 
 	#app-container{
-		padding-top: 100px;
+		padding-top: 50px;
 	}
 	
 	/*acclaim template styles */
