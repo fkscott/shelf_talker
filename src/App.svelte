@@ -59,7 +59,7 @@
 	}
 
 
-	function increaseFontSize(){
+	function increaseNameFontSize(){
 		if(acclaim){
 			var fontSize = parseInt(jQuery("#acclaim-name").css("font-size"));
 			fontSize = fontSize + 2 + "px";
@@ -75,7 +75,7 @@
 		
 	}
 
-	function decreaseFontSize(){
+	function decreaseNameFontSize(){
 		if(acclaim){
 			var fontSize = parseInt(jQuery("#acclaim-name").css("font-size"));
 			fontSize = fontSize - 2 + "px";
@@ -90,6 +90,38 @@
 		
 	}
 
+	function increaseTextFontSize(){
+
+		if(acclaim){
+			var fontSize = parseInt(jQuery("#acclaim-preview-text").css("font-size"));
+			fontSize = fontSize + 2 + "px";
+			jQuery("#acclaim-preview-text").css({'font-size': fontSize});
+		}
+
+		else{
+			console.log("changing nonacclaim");
+			var fontSize = parseInt(jQuery("#nonacclaim-preview-text").css("font-size"));
+			fontSize = fontSize + 2 + "px";
+			jQuery("#nonacclaim-preview-text").css({'font-size': fontSize});	
+		}
+		
+	}
+
+	function decreaseTextFontSize(){
+
+		if(acclaim){
+			var fontSize = parseInt(jQuery("#acclaim-preview-text").css("font-size"));
+			fontSize = fontSize - 2 + "px";
+			jQuery("#acclaim-preview-text").css({'font-size': fontSize});
+		}
+
+		else{
+			var fontSize = parseInt(jQuery("#nonacclaim-preview-text").css("font-size"));
+			fontSize = fontSize - 2 + "px";
+			jQuery("nonacclaim-preview-text").css({'font-size': fontSize});	
+		}
+		
+	}
 	function exportShelfTalker(){
 
 		if(acclaim){
@@ -206,11 +238,11 @@
 						</div>
 
 						<div class="accliam-source-container d-flex flex-row bd-highlight mb-1 justify-content-between">
-							<div class="acclaim-preview-vegan-gf bd-highlight align-self-end" id="vegan-girlfriend">
+							<div class="acclaim-preview-vegan-gf bd-highlight align-text-bottom align-self-end" id="vegan-girlfriend">
 								{lifestyle.text}
 							</div>
 							
-							<div class="acclaim-preview-source  bd-highlight justify-content-right align-self-end">
+							<div class="acclaim-preview-source bd-highlight justify-content-right align-self-end">
 								{#if !selected_source}
 									no source selected
 								{:else}
@@ -224,7 +256,7 @@
 
 							</div>
 						  </div>
-						<div class="acclaim-preview-text d-flex justify-content-center my-3 px-5">
+						<div class="acclaim-preview-text d-flex justify-content-center my-3 px-5" id="acclaim-preview-text">
 							{#if preview_text === ""}
 								Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea
 							{:else}
@@ -274,7 +306,7 @@
 					
 						</div>
 
-						<div class="nonacclaim-preview-text d-flex justify-content-center my-3 px-5">
+						<div class="nonacclaim-preview-text d-flex justify-content-center my-3 px-5" id="nonacclaim-preview-text">
 							{#if nonacclaim_text === ""}
 								Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea
 							{:else}
@@ -317,9 +349,9 @@
 							<input class="form-control form-control-lg" type="text" placeholder="Wine Name" bind:value={preview_name} aria-label="acclaim_wine_name">
 
 							<!-- Options to increase or decrease font size -->
-							<button type="button" class="btn btn-labeled btn-secondary export-button" on:click={increaseFontSize}><span class="btn-label"><Fa icon={faPlus} size="lg"/></span> Increase Name Font Size</button>
+							<button type="button" class="btn btn-labeled btn-secondary export-button" on:click={increaseNameFontSize}><span class="btn-label"><Fa icon={faPlus} size="lg"/></span> Increase Name Font Size</button>
 
-							<button type="button" class="btn btn-labeled btn-secondary export-button" on:click={decreaseFontSize}><span class="btn-label"><Fa icon={faMinus} size="lg"/></span> Decrease Name Font Size</button>
+							<button type="button" class="btn btn-labeled btn-secondary export-button" on:click={decreaseNameFontSize}><span class="btn-label"><Fa icon={faMinus} size="lg"/></span> Decrease Name Font Size</button>
 							
 							<input class="form-control form-control-lg" type="text" placeholder="Type" bind:value={preview_type} aria-label="acclaim_wine_type">
 
@@ -361,6 +393,11 @@
 						<div class="col-md-6">
 							<h4>Text Entry</h4>
 							<textarea class="form-control" bind:value={preview_text} placeholder="Enter Acclaim text."></textarea>
+							
+							<!-- increase or decrease bottom text size -->
+							<button type="button" class="btn btn-labeled btn-secondary export-button" on:click={increaseTextFontSize}><span class="btn-label"><Fa icon={faPlus} size="lg"/></span> Increase Text Font Size</button>
+
+							<button type="button" class="btn btn-labeled btn-secondary export-button" on:click={decreaseTextFontSize}><span class="btn-label"><Fa icon={faMinus} size="lg"/></span> Decrease Text Font Size</button>
 						</div>
 						<!-- end acclaim text-->
 					</div>
@@ -379,9 +416,9 @@
 								<input class="form-control form-control-lg" type="text" placeholder="Wine Name" bind:value={nonacclaim_name} aria-label="non_acclaim_wine_name">
 
 								<!-- Options to increase or decrease font size -->
-								<button type="button" class="btn btn-labeled btn-secondary export-button" on:click={increaseFontSize}><span class="btn-label"><Fa icon={faPlus} size="lg"/></span> Increase Name Font Size</button>
+								<button type="button" class="btn btn-labeled btn-secondary export-button" on:click={increaseNameFontSize}><span class="btn-label"><Fa icon={faPlus} size="lg"/></span> Increase Name Font Size</button>
 
-								<button type="button" class="btn btn-labeled btn-secondary export-button" on:click={decreaseFontSize}><span class="btn-label"><Fa icon={faMinus} size="lg"/></span> Decrease Name Font Size</button>	
+								<button type="button" class="btn btn-labeled btn-secondary export-button" on:click={decreaseNameFontSize}><span class="btn-label"><Fa icon={faMinus} size="lg"/></span> Decrease Name Font Size</button>	
 								
 								<input class="form-control form-control-lg" type="text" placeholder="Type" bind:value={nonacclaim_type} aria-label="non_acclaim_wine_type">
 
@@ -395,6 +432,11 @@
 							<div class="col-md-6">
 								<h4> Text Entry</h4>
 								<textarea class="form-control" bind:value={nonacclaim_text} placeholder="Enter text."></textarea>
+								
+								<!-- increase or decrease bottom text size -->
+								<button type="button" class="btn btn-labeled btn-secondary export-button" on:click={increaseTextFontSize}><span class="btn-label"><Fa icon={faPlus} size="lg"/></span> Increase Text Font Size</button>
+
+								<button type="button" class="btn btn-labeled btn-secondary export-button" on:click={decreaseTextFontSize}><span class="btn-label"><Fa icon={faMinus} size="lg"/></span> Decrease Text Font Size</button>
 							</div>
 							<!-- end non-acclaim text-->
 						</div> 
@@ -495,6 +537,7 @@
 		font-weight: 300;
 		font-size: 16pt;
 		padding-left: 25px;
+		line-height: 1;
 	}
 
 	.acclaim-preview-text{
