@@ -9,5 +9,5 @@ let lifestyle_options = [
     {id: 3, label: 'Natural', text: 'natural'},
     {id: 4, label: 'Organic', text: 'organic'},
     {id: 5, label: 'Biodynmamic', text: 'biodynamic'},
-    {id: 5, label: 'Kosher', text: 'kosher'}
+    {id: 6, label: 'Kosher', text: 'kosher'}
 ];
