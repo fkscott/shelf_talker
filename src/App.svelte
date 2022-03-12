@@ -118,7 +118,7 @@
 		else{
 			var fontSize = parseInt(jQuery("#nonacclaim-preview-text").css("font-size"));
 			fontSize = fontSize - 2 + "px";
-			jQuery("nonacclaim-preview-text").css({'font-size': fontSize});	
+			jQuery("#nonacclaim-preview-text").css({'font-size': fontSize});	
 		}
 		
 	}
