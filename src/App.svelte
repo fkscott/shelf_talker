@@ -51,11 +51,6 @@
 	//toggle which template is shown
 	function toggleTemplate(){
 		acclaim = !acclaim;
-
-		/* there was a weird issue where the button would be checked but the 
-		text wasn't showing and vice versa. This fixes it */
-		vegan_gf = false;
-		document.getElementById("vegan-girlfriend").style.visibility = "hidden";
 	}
 
 
@@ -314,7 +309,7 @@
 							{/if}
 						</div>
 
-						<div class="acclaim-preview-logo d-flex justify-content-center">
+						<div class="nonacclaim-preview-logo d-flex justify-content-center">
 							<img src="img/the_wine_merchant_logo.png" alt="wine merchant logo"/>
 						</div>
 					</div>
@@ -495,7 +490,6 @@
 		font-family: 'Cinzel', serif;
 		font-weight: 400; /* medium */
 		font-size: 24pt;
-		padding-top: 20px;
 	}
 
 	.acclaim-preview-vintage{
@@ -528,7 +522,7 @@
 	}
 
 	.accliam-source-container{
-		height: 60px;
+		height: 40px;
 	}
 
 	.acclaim-preview-vegan-gf{
@@ -537,7 +531,7 @@
 		font-weight: 300;
 		font-size: 16pt;
 		padding-left: 25px;
-		line-height: 1;
+		line-height: 0.9;
 	}
 
 	.acclaim-preview-text{
@@ -551,9 +545,14 @@
 	.acclaim-preview-logo img{
 		width: 75px;
 		height: auto;
-		padding-top: 25px;
+		padding-top: 75px;
 	}
 
+	.nonacclaim-preview-logo img{
+		width: 75px;
+		height: auto;
+		padding-top: 20px;
+	}
 	/* specific image styling for acclaim logos */
 	.suckling{
 		width: auto;
@@ -562,7 +561,7 @@
 
 	.dunnuck{
 		width:auto;
-		height: 25px;
+		height: 19px;
 	}
 
 	.parker{
@@ -572,7 +571,7 @@
 
 	.atkin{
 		width: auto;
-		height: 60px;
+		height: 40px;
 	}
 
 	.vinous{
@@ -615,6 +614,7 @@
 		font-weight: 400;
 		font-size: 22px;
 		height: 350px;	
+		text-align: justify;
 	}
 
 	.template-select{
