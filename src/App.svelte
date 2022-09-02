@@ -264,13 +264,14 @@
 							<div class="acclaim-preview-logo d-flex justify-content-center align-content-end">
 								<img src="img/the_wine_merchant_logo.png" alt="wine merchant logo"/>
 							</div>
-							
+	
+							{#if preview_price.length !== 0}
 							<div class="d-flex flex-row justify-content-end align-items-start">
 								<div class="acclaim-preview-price">
 									${preview_price}
 								</div>
 							</div>
-
+							{/if}
 					</div>
 					{:else}
 
@@ -321,12 +322,15 @@
 						<div class="nonacclaim-preview-logo d-flex justify-content-center">
 							<img src="img/the_wine_merchant_logo.png" alt="wine merchant logo"/>
 						</div>
-
+						
+						
+						{#if nonacclaim_price.length !== 0}
 						<div class="d-flex flex-row justify-content-end align-items-start">
 							<div class="acclaim-preview-price">
 								${nonacclaim_price}
 							</div>
 						</div>
+						{/if}
 					</div>
 					<!-- end non-acclaim preview-->
 					{/if}
@@ -369,7 +373,7 @@
 
 							<input class="form-control form-control-lg" type="text" placeholder="Region" bind:value={preview_region} aria-label="acclaim_wine_region">
 
-							<input class="form-control form-control-lg" type="text" placeholder="score" bind:value={preview_score} aria-label="acclaim_score">
+							<input class="form-control form-control-lg" type="text" placeholder="Score" bind:value={preview_score} aria-label="acclaim_score">
 
 							<select bind:value={selected_source} class="form-select form-select-lg mb-3" aria-label="acclaim_source_dropdown">
 								<option hidden>Acclaim Source</option>
@@ -395,7 +399,7 @@
 								{/each}
 
 							</select>
-
+								
 							<input class="form-control form-control-lg" type="text" placeholder="Price" bind:value={preview_price} aria-label="acclaim_score">
 							
 						</div>
