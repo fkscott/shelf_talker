@@ -61,3 +61,93 @@ button:not(:disabled):active {
 button:focus {
 	border-color: #666;
 }
+
+
+.preview-template{
+    position: relative;
+}
+
+.preview-name{
+    font-family: 'Cinzel', serif;
+    font-weight: 700; /* semi-bold */
+    font-size: 42pt;
+    color: #AA263D;
+    padding-top: 40px;
+    padding-bottom: 10px;
+    max-height: 135px;
+    line-height: 60px;
+    padding-inline: 20px;
+
+}
+
+.preview-type{
+    font-family: 'Cinzel', serif;
+    font-weight: 400; /* medium */
+    font-size: 24pt;
+}
+
+.preview-vintage{
+    font-family: 'Cinzel', serif;
+    font-weight: 400; /* medium */
+    font-size: 24pt
+}
+
+.preview-region{
+    font-family: 'Cinzel', serif;
+    font-weight: 400; /* medium */
+    font-size: 24pt;
+}
+
+.preview-price {
+	padding-right: 1.5625rem;
+	font-size: 36pt;
+	line-height: 0.1;
+	font-family: 'Work Sans', sans-serif;
+	font-weight: 700;
+}
+
+/* specific image styling for acclaim logos */
+.suckling{
+	width: auto;
+	height: 60px;
+}
+
+.dunnuck{
+	width:auto;
+	height: 19px;
+}
+
+.parker{
+	width: auto;
+	height: 60px;
+}
+
+.atkin{
+	width: auto;
+	height: 40px;
+}
+
+.vinous{
+	width: auto;
+	height: 35px;
+}
+
+.wineandspirits{
+	width: auto;
+	height: 35px;
+}
+
+.spectator{
+	width: auto;
+	height: 45px;
+}
+
+.untappd{
+	width: auto;
+	height: 50px;
+}
+
+.decanter{
+	width: auto;
+	height: 40px;
+}
