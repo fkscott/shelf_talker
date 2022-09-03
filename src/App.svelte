@@ -23,6 +23,7 @@
 	let preview_region = "";
 	let preview_score = "";
 	let preview_text= "";
+	let preview_price = "";
 
 
 	//variables updated by NON-acclaim template
@@ -31,7 +32,7 @@
 	let nonacclaim_type = "";
 	let nonacclaim_region = "";
 	let nonacclaim_text = "";
-
+	let nonacclaim_price = "";
 	// variable to update acclaim template with selected option
 	let selected_source;
 
@@ -258,10 +259,19 @@
 								{preview_text}
 							{/if}
 						</div>
-
-						<div class="acclaim-preview-logo d-flex justify-content-center align-content-end">
-							<img src="img/the_wine_merchant_logo.png" alt="wine merchant logo"/>
-						</div>
+						
+							
+							<div class="acclaim-preview-logo d-flex justify-content-center align-content-end">
+								<img src="img/the_wine_merchant_logo.png" alt="wine merchant logo"/>
+							</div>
+	
+							{#if preview_price.length !== 0}
+							<div class="d-flex flex-row justify-content-end align-items-start">
+								<div class="acclaim-preview-price">
+									${preview_price}
+								</div>
+							</div>
+							{/if}
 					</div>
 					{:else}
 
@@ -312,6 +322,15 @@
 						<div class="nonacclaim-preview-logo d-flex justify-content-center">
 							<img src="img/the_wine_merchant_logo.png" alt="wine merchant logo"/>
 						</div>
+						
+						
+						{#if nonacclaim_price.length !== 0}
+						<div class="d-flex flex-row justify-content-end align-items-start">
+							<div class="acclaim-preview-price">
+								${nonacclaim_price}
+							</div>
+						</div>
+						{/if}
 					</div>
 					<!-- end non-acclaim preview-->
 					{/if}
@@ -380,7 +399,8 @@
 								{/each}
 
 							</select>
-
+								
+							<input class="form-control form-control-lg" type="text" placeholder="Price" bind:value={preview_price} aria-label="acclaim_score">
 							
 						</div>
 
@@ -421,6 +441,7 @@
 	
 								<input class="form-control form-control-lg" type="text" placeholder="Region" bind:value={nonacclaim_region} aria-label="non_acclaim_wine_region">
 
+								<input class="form-control form-control-lg" type="text" placeholder="Price" bind:value={nonacclaim_price} aria-label="non_acclaim_price">
 							</div>
 							<!-- End Non-Acclaim Info Entry -->
 							<!--start non-acclaim text-->
@@ -552,6 +573,14 @@
 		width: 75px;
 		height: auto;
 		padding-top: 20px;
+	}
+	/* price tag */
+	.acclaim-preview-price {
+		padding-right: 3rem;
+		font-size: 36pt;
+		line-height: 0.1;
+		font-family: 'Work Sans', sans-serif;
+		font-weight: 700;
 	}
 	/* specific image styling for acclaim logos */
 	.suckling{
