@@ -577,7 +577,7 @@
 	/* price tag */
 	.acclaim-preview-price {
 		padding-right: 3rem;
-		font-size: 32pt;
+		font-size: 36pt;
 		line-height: 0.1;
 		font-family: 'Work Sans', sans-serif;
 		font-weight: 700;
