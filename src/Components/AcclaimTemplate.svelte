@@ -1,80 +1,88 @@
 <script>
-    export let props;
+    import { acclaim_store } from '../stores/acclaim_store';
+    import { onDestroy } from 'svelte';
+    export let acclaim = {};
+    const unsubscribe = acclaim_store.subscribe(data => {
+        acclaim = data;
+    });
+
+    onDestroy(unsubscribe);
+    
 </script>
 
 <main>
     <div id="acclaim-template-preview">
         <div class="preview-name d-flex flex-row justify-content-center text-center" id="acclaim-name">
-            {#if props.name ===""}
+            {#if acclaim.name ===""}
                 Wine Name
             {:else}
-                {props.name}
+                {acclaim.name}
             {/if}
             </div>
 
         <div class="preview-type d-flex justify-content-center text-center">
-            {#if props.type ===""}
+            {#if acclaim.type ===""}
                 type
             {:else}
-                {props.type}
+                {acclaim.type}
             
             {/if}
         </div>
 
         <div class="preview-vintage d-flex justify-content-center">
-            {#if props.vintage === ""}
+            {#if acclaim.vintage === ""}
                 vintage
             {:else}
-                {props.vintage}
+                {acclaim.vintage}
             {/if}
         </div>
 
         <div class="preview-region d-flex justify-content-center">
-            {#if props.region === ""}
+            {#if acclaim.region === ""}
                 Region
             {:else}
-                {props.region}
+                {acclaim.region}
             {/if}
 
         </div>
 
         <div class="acclaim-preview-score d-flex justify-content-center">
-            {#if props.score === ""}
+            {#if acclaim.score === ""}
                 Score
             {:else}
-                {props.score}
+                {acclaim.score}
             {/if}
         </div>
 
         <div class="accliam-source-container d-flex flex-row bd-highlight mb-1 justify-content-between">
             <div class="acclaim-preview-vegan-gf bd-highlight align-text-bottom align-self-end" id="vegan-girlfriend">
                 <!-- I don't want to know why this works -->
-                {#if !props.lifestyle}
+                {#if !acclaim.lifestyle}
                     no source selected
                 {:else}
-                    {props.lifestyle.text}
+                    {acclaim.lifestyle.text}
                 {/if}
             </div>
             
             <div class="acclaim-preview-source bd-highlight justify-content-right align-self-end">
-                {#if !props.selected_source}
+                {#if !acclaim.selected_source}
                     no source selected
                 {:else}
 
-                {#if props.selected_source.id == 10}
-                    {props.custom_source}
+                {#if acclaim.selected_source.id == 10}
+                    {acclaim.custom_source}
                 {:else}
-                    <img src={props.selected_source.img_path} class={props.selected_source.styles} alt="">	
+                    <img src={acclaim.selected_source.img_path} class={acclaim.selected_source.styles} alt="">	
                 {/if}
             {/if}
 
             </div>
           </div>
         <div class="acclaim-preview-text d-flex justify-content-center my-3 px-5" id="acclaim-preview-text">
-            {#if props.text === ""}
+            {#if acclaim.text === ""}
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea
             {:else}
-                {props.text}
+                {acclaim.text}
             {/if}
         </div>
         
@@ -83,10 +91,10 @@
                 <img src="img/the_wine_merchant_logo.png" alt="wine merchant logo"/>
             </div>
 
-            {#if props.price.length !== 0}
+            {#if acclaim.price.length !== 0}
             <div class="d-flex flex-row justify-content-end align-items-start">
                 <div class="preview-price">
-                    ${props.price}
+                    ${acclaim.price}
                 </div>
             </div>
             {/if}

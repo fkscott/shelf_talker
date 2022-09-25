@@ -1,49 +1,56 @@
-     <script>
-        export let props;
-     </script>
+<script>
+    import { non_acclaim_store } from '../stores/non_acclaim_store';
+    import { onDestroy } from 'svelte';
+    export let non_acclaim = {};
+    const unsubscribe = non_acclaim_store.subscribe(data => {
+        non_acclaim = data;
+    });
+
+    onDestroy(unsubscribe);
+</script>
 
 <main>
     <!-- start non-acclaim preview-->
     <div id="nonacclaim-template-preview">
         <div class="preview-name d-flex flex-row justify-content-center text-center" id="nonacclaim-name">
-            {#if props.name ===""}
+            {#if non_acclaim.name ===""}
                 Wine Name
             {:else}
-                {props.name}
+                {non_acclaim.name}
 
             {/if}
             </div>
 
         <div class="preview-type d-flex justify-content-center text-center">
-            {#if props.type ===""}
+            {#if non_acclaim.type ===""}
                 type
             {:else}
-                {props.type}
+                {non_acclaim.type}
             {/if}
         </div>
 
         <div class="preview-vintage d-flex justify-content-center">
-            {#if props.vintage === ""}
+            {#if non_acclaim.vintage === ""}
                 vintage
             {:else}
-                {props.vintage}
+                {non_acclaim.vintage}
             {/if}
         </div>
 
         <div class="preview-region d-flex justify-content-center">
-            {#if props.region === ""}
+            {#if non_acclaim.region === ""}
                 Region
             {:else}
-                {props.region}
+                {non_acclaim.region}
             {/if}
     
         </div>
 
         <div class="nonacclaim-preview-text d-flex justify-content-center my-3 px-5" id="nonacclaim-preview-text">
-            {#if props.text === ""}
+            {#if non_acclaim.text === ""}
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea
             {:else}
-                {props.text}
+                {non_acclaim.text}
             {/if}
         </div>
 
@@ -52,10 +59,10 @@
         </div>
         
         
-        {#if props.price.length !== 0}
+        {#if non_acclaim.price.length !== 0}
         <div class="d-flex flex-row justify-content-end align-items-start">
             <div class="preview-price">
-                ${props.price}
+                ${non_acclaim.price}
             </div>
         </div>
         {/if}
